@@ -22,10 +22,16 @@ def on_message(client, userdata, message):
 	try:	
 		raw_str = message.payload.decode('utf-8')
 		data = json.loads(raw_str)
-		# messages are loaded as dictionaries, then we can access.
+		print(message)
+		print(message.payload)
+		print(raw_str)
 		print(data)
+		print(message.topic)
+		# messages are loaded as dictionaries, then we can access.
 		x = data['position']['x']
 		y = data['position']['y']
+		quality = data['position']['quality']
+		
 
 		# print("Message received: " + message.topic + " : " + str(message.payload))
 		node_id = message.topic.split('/')[2]
