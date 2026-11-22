@@ -22,6 +22,8 @@ def on_message(client, userdata, message):
 	try:	
 		raw_str = message.payload.decode('utf-8')
 		data = json.loads(raw_str)
+		# messages are loaded as dictionaries, then we can access.
+		print(data)
 		x = data['position']['x']
 		y = data['position']['y']
 
