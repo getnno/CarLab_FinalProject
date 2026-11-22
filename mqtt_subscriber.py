@@ -23,13 +23,12 @@ def on_message(client, userdata, message):
 		raw_str = message.payload.decode('utf-8')
 		data = json.loads(raw_str)
 		# messages are loaded as dictionaries, then we can access.
-		print(data)
 		x = data['position']['x']
 		y = data['position']['y']
-
+		qual = data['position']['quality']
 		# print("Message received: " + message.topic + " : " + str(message.payload))
 		node_id = message.topic.split('/')[2]
-		format_out = "node_id = {}, x = {}, y = {};\n".format(node_id, x, y)
+		format_out = "node_id = {}, x = {}, y = {}, quality = {};\n".format(node_id, x, y, qual)
 		print(format_out)
 		ser.write(format_out.encode('utf-8'))    
 # if message.topic == 'ep_mqtt/topic2':
